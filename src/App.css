@@ -45,7 +45,8 @@ img{ max-width:100%;}
   background: #f8f8f8 none repeat scroll 0 0;
   float: left;
   overflow: hidden;
-  width: 40%; border-right:1px solid #c4c4c4;
+  width: 30%; 
+  border-right:1px solid #c4c4c4;
 }
 .inbox_msg {
   border: 1px solid #c4c4c4;
@@ -62,7 +63,7 @@ img{ max-width:100%;}
   width: 60%; 
   padding:0;
 }
-.headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;}
+.headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;margin-top: 25px;}
 
 .recent_heading h4 {
   color: #05728f;
@@ -89,44 +90,49 @@ img{ max-width:100%;}
 .chat_ib {
   float: left;
   padding: 0 0 0 15px;
-  width: 88%;
+  width: 80%;
 }
 
 .chat_people{ overflow:hidden; clear:both;}
 .chat_list {
   border-bottom: 1px solid #c4c4c4;
   margin: 0;
-  /* padding: 18px 16px 10px; */
   cursor: pointer;
-
 }
 
 .chat_list :hover{
-  background:#ebebeb;
+  background:#DCF1FA;
 }
 
-.inbox_chat { height: 550px; overflow-y: scroll;}
+/* .chat_list :focus{
+  background: #61dafb;
+} */
+.chat_list :active{
+  background: #ebebeb;
+}
 
-.active_chat{ background:#ebebeb;}
+.inbox_chat { height: 545px; overflow-y: scroll;}
+
+.active_chat{ background:#C7EDFC;}
 
 .incoming_msg_img {
   display: inline-block;
-  width: 6%;
+  width: 5%;
 }
 .received_msg {
   display: inline-block;
   padding: 0 0 0 10px;
   vertical-align: top;
   width: 92%;
- }
- .received_withd_msg p {
+}
+.received_withd_msg p {
   background: #ebebeb none repeat scroll 0 0;
   border-radius: 3px;
   color: #646464;
   font-size: 14px;
   margin: 0;
   padding: 5px 10px 5px 12px;
-  width: 100%;
+  width: 50%;
 }
 .time_date {
   color: #747474;
@@ -134,11 +140,13 @@ img{ max-width:100%;}
   font-size: 12px;
   margin: 8px 0 0;
 }
+
 .received_withd_msg { width: 57%;}
 .mesgs {
   float: left;
-  padding: 30px 15px 0 25px;
-  width: 60%;
+  padding: 50px 30px 0px 30px;
+  width: 70%;
+  z-index: -1;
 }
 
  .sent_msg p {
@@ -152,7 +160,7 @@ img{ max-width:100%;}
 .outgoing_msg{ overflow:hidden; margin:26px 0 26px;}
 .sent_msg {
   float: right;
-  width: 46%;
+  width: auto;
 }
 .input_msg_write input {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
@@ -160,10 +168,10 @@ img{ max-width:100%;}
   color: #4c4c4c;
   font-size: 15px;
   min-height: 48px;
-  width: 100%;
+  /* width: 80%; */
 }
 
-.type_msg {border-top: 1px solid #c4c4c4;position: relative;}
+.type_msg {border-top: 1px solid #c4c4c4;position: relative; margin-right: 25px;}
 .msg_send_btn {
   background: #05728f none repeat scroll 0 0;
   border: medium none;
@@ -179,8 +187,10 @@ img{ max-width:100%;}
 }
 .messaging { padding: 0 0 50px 0;}
 .msg_history {
-  height: 560px;
-  overflow-y: auto;
+  height: 570px;
+  width: auto;
+  /* overflow-y: auto; */
+  /* display: flex; */
 }
 
 /*Drop down*/
@@ -198,12 +208,12 @@ img{ max-width:100%;}
   border: none;
   text-align: left!important;
   height: 40px;
+  cursor: pointer;
 }
 
 .cust-item:hover {
   background-color: ghostwhite;
 }
-
 
 /* .img_cont{
   position: relative;
@@ -228,3 +238,18 @@ img{ max-width:100%;}
     border:1.5px solid #f5f6fa;
   
   } */
+  .aui-avatar .custom-presence-indicator {
+    /* position the indicator. AUI Avatars are a relative container. */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    /* size the indicator appropriately. content should not appear outside the indicator. */
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    /* style the indicator. */
+    color: #00875A;
+    border: 3px solid #fff;
+    border-radius: 100%;
+    fill: #00875A;
+}

@@ -1,28 +1,35 @@
 import React from "react";
-import Avatar from "react-avatar";
-import {EllipsisOutlined,SettingOutlined,LogoutOutlined,CheckCircleOutlined,IssuesCloseOutlined   } from '@ant-design/icons';
-import {Button as Btn} from 'antd';
+import '../css/test.css';
 
 const Test = ()=>{  
-    return (<>
-        <div style={{ padding: "10px 0px 5px 20px" }}>
-            <Avatar size={50} round src="http://emilcarlsson.se/assets/mikeross.png"></Avatar>
-            <span style={{ marginLeft: "15px", fontSize: "20px" }}><b>Trương Vệ Kiện</b></span>
-            <div className="dropdown dropleft float-right">
-                <Btn data-toggle="dropdown" shape="circle" icon={<EllipsisOutlined />} >
-    
-                </Btn>
-                <div className="dropdown-menu">
-                    <h2 className="dropdown-header">Trạng thái</h2>
-                        <Btn className="cust-item" icon={<CheckCircleOutlined style={{color:"green"}}/>}>Online</Btn>
-                        <Btn className="cust-item" icon={<IssuesCloseOutlined style={{color:"orange"}}/>}>Busy</Btn>
-                    <h2 className="dropdown-header">Cài đặt</h2>
-                        <Btn className="cust-item" icon={<SettingOutlined/>}>Thiết lập</Btn>
-                        <Btn className="cust-item" icon={<LogoutOutlined/>}>Đăng xuất</Btn>
+    return (
+      <div className="test" style={{ width: "100%", height: "100%" }}>
+        <div className="messaging">
+          <div className="inbox_msg">
+            <div className="inbox_people">
+              <div className='chat_list' >
+                <div style={{ padding: "18px" }}>
+                  <div className="chat_people">
+                    <div className="chat_img">
+                      {/* <Avatar round={true} size={30} src={webcf.url_open_img + props.avatar}></Avatar>  */}
+                      <div className='icon-container'>
+                        <img className="avatar_main" alt="img" />
+                        <div className='status-circle' style={{ backgroundColor: 'green' }}>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="chat_ib">
+                      <h5>abc <span className="chat_date">Dec 11</span></h5>
+                      <p>Ok</p>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </>)
+      </div>
+    )
 }
 
 export default Test;

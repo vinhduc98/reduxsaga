@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import {getAllAccount} from '../../utils/userapi';
-import {webcf} from '../../config/webconfig';
-import Avatar from "react-avatar";
+import UserItem from './useritem';
+import {MessageContext} from '../../contexts/messagecontext';
 
 const UserChat = ()=>{
+    const {getMessages} = useContext(MessageContext);
     const [accounts, setAccounts] = useState();
-    const [activeChat, setActivechat] = useState(false);
+    const [clickUserItem, setClickUserItem] = useState();
 
     useEffect(()=>{
         getAllAccount("GET").then(rs => {
@@ -13,30 +14,27 @@ const UserChat = ()=>{
         })
     }, [])
 
-    const handleClickItemUser = ()=>{
-        setActivechat(!activeChat);
+    const handleClickUserItem = (data)=>{
+        setClickUserItem(data);
+        getMessages(1, data);
     }
-
-    // let stringChat = activeChat?"chat_list":"chat_list active_chat"
-
-    console.log(accounts);
+  
     let elmAccount = accounts && accounts.map((item, index)=>{
-        return(<div className="chat_list" key={index} >
-            <div style={{ padding: "18px" }}  onClick={handleClickItemUser}>
-                <div className="chat_people">
-                    <div className="chat_img"> <Avatar round={true} size={30} src={webcf.url_open_img + item.avatar}></Avatar> </div>
-                        <div className="chat_ib">
-                            <h5>{item.name} <span className="chat_date">{item.dateOfBirth.toString()}</span></h5>
-                            <p>Ok</p>
-                        </div>
-                </div>
-            </div>
-        </div>)
+        return (<UserItem key ={index}
+            id={item.id}
+            name={item.name}
+            dateOfBirth={item.dateOfBirth}
+            avatar={item.avatar}
+            callBackClickUserItem={handleClickUserItem}
+            clickUserItem={clickUserItem}
+        >
+
+        </UserItem>)
     })
 
-    return (  <div className="inbox_chat">
-                           {elmAccount}
-                        </div>)
+    return (<div className="inbox_chat">
+        <div>{elmAccount}</div>
+    </div>)
 }
 
 export default UserChat;

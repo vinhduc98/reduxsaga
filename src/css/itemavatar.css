@@ -1,0 +1,23 @@
+.icon-container2 {
+    float: left;
+    width: 35px;
+    height: 35px;
+    position: relative;
+  }
+  
+.avatar_main2 {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border:2px solid white;
+}
+
+.status-circle2 {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+}
