@@ -1,11 +1,13 @@
 import Chat from "./components/chats/chat";
 import Login from "./components/authorizations/login";
+import Home from "./components/manager/homepage";
 
 const routes = [
     {
         key:'home',
         path:'/',
-        exact:true
+        exact:true,
+        main:()=><Home/>
     },
     {
         key:'login',

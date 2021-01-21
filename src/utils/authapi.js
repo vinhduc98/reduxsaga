@@ -11,3 +11,13 @@ export const Login = (method="POST", body)=>{
     })
 
 }
+
+export const LogoutAPI = (method = 'POST', headers) =>{
+    return axios({
+        method:method,
+        url:webcf.url+`Auth/Logout`,
+        headers:headers
+    }).catch(err=>{
+        console.log(err)
+    })
+}

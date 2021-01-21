@@ -12,13 +12,16 @@
     "jquery": "^3.5.1",
     "react": "^17.0.1",
     "react-avatar": "^3.9.7",
+    "react-bootstrap": "^1.4.3",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-scroll-to-bottom": "^4.1.0",
+    "react-scrollable-feed": "^1.2.0",
     "reactjs-localstorage": "^1.0.1",
     "reactstrap": "^8.8.1",
+    "socket.io-client": "^3.0.5",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

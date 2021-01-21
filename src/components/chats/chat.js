@@ -5,11 +5,16 @@ import {EllipsisOutlined,SettingOutlined,LogoutOutlined,CheckCircleOutlined,Issu
 import {Button as Btn} from 'antd';
 import '../../css/avatar.css';
 import axios from 'axios';
+import {socket} from '../../App';
+import {reactLocalStorage} from 'reactjs-localstorage';
+import Logout from '../authorizations/logout';
+import {webcf} from '../../config/webconfig';
 
 const Chat = ()=>{
 
+    const userinfo = reactLocalStorage.getObject('userinfo');
     const [stateColor, setStateColor] = useState('green');
-    // console.log(chatContent);
+    const [showLogout, setShowlogout] = useState(false)
 
     const changeOnline = ()=>{
         setStateColor('green');
@@ -23,6 +28,25 @@ const Chat = ()=>{
         setStateColor('red');
     }
 
+    const handleShowlogout = ()=>{
+        setShowlogout(!showLogout);
+    }
+
+    const handleCloseLogout = (data)=>{
+        setShowlogout(!data)
+    }
+
+    useEffect(()=>{
+        const userinfo = reactLocalStorage.getObject('userinfo');
+        const eventOnline =()=>{
+            if(userinfo.username!==undefined)
+            {
+                socket.emit('online',{username: userinfo.username, socketId: socket.id});
+            }    
+        }
+        eventOnline();
+    },[])
+
     useEffect(()=>{
         async function fetchData() {
             const result = await axios(
@@ -30,9 +54,9 @@ const Chat = ()=>{
             );
             console.log(result.data.hits);
         }
-        fetchData();
-        
+        fetchData();        
     },[])
+
     return (
         <div className="container">
             <div className="messaging">
@@ -41,10 +65,11 @@ const Chat = ()=>{
                         <div style={{ padding: "20px 0px 0px 20px" }}>
                             {/* <Avatar size={50} round src="http://emilcarlsson.se/assets/mikeross.png"></Avatar> */}
                             <div className='icon-container'>
-                                <img className="avatar_main" src="https://cdn2.iconfinder.com/data/icons/flatfaces-everyday-people-square/128/beard_male_man_face_avatar-512.png" alt="img" />
+                                <img className="avatar_main" src={webcf.url_open_img+userinfo.avatar} alt="img" />
+                                {/* <div className='status-circle' style={{ backgroundColor: `${stateColor}` }}></div> */}
                                 <div className='status-circle' style={{ backgroundColor: `${stateColor}` }}></div>
                             </div>
-                            <span style={{fontSize:"20px", marginLeft:"20px" }}><b>Trương Vệ Kiện</b></span>
+                            <span style={{fontSize:"20px", marginLeft:"20px" }}><b>{userinfo.name}</b></span>
                             
                             <div className="dropdown dropleft float-right">
                                 <Btn data-toggle="dropdown" shape="circle" icon={<EllipsisOutlined />} />
@@ -55,9 +80,10 @@ const Chat = ()=>{
                                     <Btn className="cust-item" icon={<StopOutlined style={{ color: "red" }} />} onClick={changeOffline}>Offline</Btn>
                                     <h2 className="dropdown-header">Cài đặt</h2>
                                     <Btn className="cust-item" icon={<SettingOutlined />}>Thiết lập</Btn>
-                                    <Btn className="cust-item" icon={<LogoutOutlined />}>Đăng xuất</Btn>
+                                    <Btn className="cust-item" icon={<LogoutOutlined />} onClick={handleShowlogout}>Đăng xuất</Btn>
                                 </div>
                             </div>
+
                         </div>
                         <div className="headind_srch">
                             <div className="recent_heading">
@@ -72,7 +98,7 @@ const Chat = ()=>{
                                 </div>
                             </div>
                         </div>
-                        <UserChat />
+                        <UserChat/>
                     </div>
                     <div style={{height:"100%", width:"100%"}}>
                         {/* <div style={{height:"100px",width:"100%"}}></div> */}
@@ -81,7 +107,8 @@ const Chat = ()=>{
                 </div>
                 {/* <p className="text-center top_spac"> Design by <a target="_blank" href=" #">Sunil Rajput</a></p> */}
             </div>
-        </div>
+            <Logout showLogout={showLogout} callBackLogout={handleCloseLogout}/>
+        </div>  
     )
 }
 

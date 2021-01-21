@@ -23,12 +23,8 @@ const LayOut = ()=>{
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
             <div className="logo"> </div>
             <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                <Menu.Item key="1" icon={<PieChartOutlined />}>
-                    Option 1
-        </Menu.Item>
-                <Menu.Item key="2" icon={<DesktopOutlined />}>
-                    Option 2
-        </Menu.Item>
+                <Menu.Item key="1" icon={<PieChartOutlined />}>Option 1</Menu.Item>
+                <Menu.Item key="2" icon={<DesktopOutlined />}> Option 2</Menu.Item>
                 <SubMenu key="sub1" icon={<UserOutlined />} title="User">
                     <Menu.Item key="3">Tom</Menu.Item>
                     <Menu.Item key="4">Bill</Menu.Item>
@@ -38,14 +34,12 @@ const LayOut = ()=>{
                     <Menu.Item key="6">Team 1</Menu.Item>
                     <Menu.Item key="8">Team 2</Menu.Item>
                 </SubMenu>
-                <Menu.Item key="9" icon={<FileOutlined />}>
-                    Files
-        </Menu.Item>
+                <Menu.Item key="9" icon={<FileOutlined />}> Files </Menu.Item>
             </Menu>
         </Sider>
         <Layout className="site-layout">
             <Header className="site-layout-background" style={{ padding: 0 }} />
-                <Content style={{ margin: '0 16px' }}>
+            <Content style={{ margin: '0 16px' }}>
                 <Breadcrumb style={{ margin: '16px 0' }}>
                     <Breadcrumb.Item href="">
                         <HomeOutlined />
@@ -56,10 +50,10 @@ const LayOut = ()=>{
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>Application</Breadcrumb.Item>
                 </Breadcrumb>
-                    <div className="site-layout-background" style={{ padding: 24, minHeight: 550 }}>
-                        Rõ ràng là như thế
+                <div className="site-layout-background" style={{ padding: 24, minHeight: 550 }}>
+                    Rõ ràng là như thế
                     </div>
-                </Content>
+            </Content>
             <Footer style={{ textAlign: 'center' }}>Bản quyền được làm bởi ancuc.com 2020</Footer>
         </Layout>
     </Layout>
